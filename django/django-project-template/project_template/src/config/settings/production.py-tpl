@@ -1,0 +1,41 @@
+"""Production settings for the {{ project_name }} project.
+
+All sensitive values must be supplied via environment variables. The module
+fails fast (via ``python-decouple``) if ``DJANGO_SECRET_KEY`` or
+``DJANGO_ALLOWED_HOSTS`` are missing.
+"""
+
+from __future__ import annotations
+
+from decouple import Csv, config
+
+from .base import *  # noqa: F401,F403
+
+DEBUG = False
+
+# No default - decouple raises UndefinedValueError if either is missing.
+SECRET_KEY = config("DJANGO_SECRET_KEY")
+ALLOWED_HOSTS = config("DJANGO_ALLOWED_HOSTS", cast=Csv())
+
+# ---------------------------------------------------------------------------
+# Security hardening
+# ---------------------------------------------------------------------------
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = config("DJANGO_SECURE_SSL_REDIRECT", default=True, cast=bool)
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = config("DJANGO_SECURE_HSTS_SECONDS", default=31_536_000, cast=int)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REFERRER_POLICY = "same-origin"
+X_FRAME_OPTIONS = "DENY"
+
+# Static files - WhiteNoise is a lightweight default; swap for S3 if needed.
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
+
+CSRF_TRUSTED_ORIGINS = config("DJANGO_CSRF_TRUSTED_ORIGINS", cast=Csv())

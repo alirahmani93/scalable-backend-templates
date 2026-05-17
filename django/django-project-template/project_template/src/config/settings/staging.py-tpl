@@ -1,0 +1,16 @@
+"""Staging settings for the {{ project_name }} project.
+
+Mirrors production hardening but typically points at a staging database and
+relaxes log levels for QA.
+"""
+
+from __future__ import annotations
+
+from decouple import config
+
+from .production import *  # noqa: F401,F403
+
+DEBUG = False
+
+# Looser security headers can be configured here if staging needs them.
+SECURE_HSTS_SECONDS = config("DJANGO_SECURE_HSTS_SECONDS", default=60, cast=int)

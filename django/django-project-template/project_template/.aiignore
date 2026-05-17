@@ -1,0 +1,27 @@
+# {{ project_name }} - AI tooling ignore list.
+# Mirrors .gitignore plus paths that should never be sent to AI assistants.
+
+.env
+.env.*
+!.env.example
+
+.venv/
+venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+build/
+dist/
+*.egg-info/
+
+staticfiles/
+media/
+db.sqlite3
+db.sqlite3-journal
+
+docker/postgres_data/
+
+# Generated migrations are usually fine to share, but secret fixtures are not:
+**/fixtures/secrets/

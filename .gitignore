@@ -1,0 +1,76 @@
+# Workspace root — single .gitignore for this repository.
+# (Nested django-project-template/project_template/.gitignore is the Django
+# template file copied into new projects by `startproject`, not a duplicate
+# of these rules.)
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# --- Virtualenvs ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Distribution / packaging ---
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+.eggs/
+pip-wheel-metadata/
+
+# --- Tests / coverage ---
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.pytest_cache/
+.cache/
+
+# --- Type checkers / linters ---
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# --- Django (local runs / generated artefacts) ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+test-media/
+
+# --- Environments ---
+.env
+.env.*
+!.env.example
+# Keep template `.env` that ships inside project_template (placeholders).
+!django/django-project-template/project_template/.env
+
+# --- Editors / IDEs ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Docker ---
+docker/postgres_data/
+
+# --- Node (frontend assets) ---
+node_modules/

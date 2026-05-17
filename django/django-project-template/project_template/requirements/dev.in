@@ -1,0 +1,10 @@
+-r base.in
+
+ruff>=0.6
+mypy>=1.11
+django-stubs[compatible-mypy]>=5.1
+pytest>=8.3
+pytest-django>=4.9
+pytest-cov>=5.0
+pre-commit>=3.8
+ipython>=8.27

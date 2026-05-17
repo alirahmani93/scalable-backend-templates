@@ -1,0 +1,22 @@
+"""Test settings for the {{ project_name }} project.
+
+Optimised for fast, deterministic CI runs.
+"""
+
+from __future__ import annotations
+
+from .base import *  # noqa: F401,F403
+from .base import BASE_DIR
+
+# Disable migrations to speed up the test run.
+class _DisableMigrations:
+    def __contains__(self, item: str) -> bool:  # pragma: no cover - trivial
+        return True
+
+    def __getitem__(self, item: str) -> None:  # pragma: no cover - trivial
+        return None
+
+
+MIGRATION_MODULES = _DisableMigrations()
+
+MEDIA_ROOT = BASE_DIR / "test-media"

@@ -1,0 +1,11 @@
+from .base import *  # noqa
+from .utils import AppSetting
+
+if AppSetting.is_in_production_env():
+    from .production import *  # noqa
+elif AppSetting.is_in_local_staging():
+    from .local import *  # noqa
+elif AppSetting.is_in_development_env():
+    from .development import *  # noqa
+elif AppSetting.is_in_test_env():
+    from .test import *  # noqa

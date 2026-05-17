@@ -1,0 +1,6 @@
+"""{{ camel_case_app_name }} application package.
+
+Django >= 3.2 auto-discovers ``AppConfig`` subclasses, so no
+``default_app_config`` declaration is needed here. The configuration class
+lives in :mod:`apps.{{ app_name }}.apps`.
+"""

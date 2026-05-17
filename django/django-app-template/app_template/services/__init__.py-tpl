@@ -1,0 +1,16 @@
+"""Service / use-case layer for the {{ app_name }} app.
+
+Business logic lives here, isolated from views and ORM concerns.
+Each service module should expose pure functions or small classes that
+operate on domain inputs and orchestrate persistence via managers / models.
+
+Example::
+
+    apps/{{ app_name }}/services/
+        __init__.py
+        example.py    # def create_example(...) -> Example: ...
+"""
+
+from __future__ import annotations
+
+__all__: list[str] = []

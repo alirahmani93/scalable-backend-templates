@@ -1,0 +1,9 @@
+"""Development settings for the {{ project_name }} project.
+
+Activated by setting ``DJANGO_SETTINGS_MODULE=config.settings.development``.
+"""
+
+from __future__ import annotations
+
+from .base import *  # noqa: F401,F403
+

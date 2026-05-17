@@ -1,0 +1,18 @@
+"""Root URL configuration for the {{ project_name }} project."""
+
+from __future__ import annotations
+
+from django.contrib import admin
+from django.http import HttpRequest, JsonResponse
+from django.urls import path
+
+
+def healthcheck(_request: HttpRequest) -> JsonResponse:
+    """Simple liveness probe used by container orchestrators."""
+    return JsonResponse({"status": "ok"})
+
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("healthz/", healthcheck, name="healthcheck"),
+]

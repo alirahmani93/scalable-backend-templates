@@ -1,0 +1,8 @@
+# Pinned base requirements for production-like environments.
+# Regenerate with: pip-compile requirements/base.in -o requirements/base.txt
+Django>=5.1,<6.0
+psycopg[binary]>=3.2
+dj-database-url>=2.2
+python-decouple>=3.8
+gunicorn>=23.0
+whitenoise>=6.7

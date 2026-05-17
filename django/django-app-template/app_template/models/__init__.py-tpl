@@ -1,0 +1,18 @@
+"""Models package for the {{ app_name }} app.
+
+Split each aggregate / domain entity into its own module and re-export the
+public classes from this ``__init__`` to keep import paths stable, e.g.::
+
+    apps/{{ app_name }}/models/
+        __init__.py
+        example.py
+
+    # __init__.py
+    from .example import Example
+
+    __all__ = ["Example"]
+"""
+
+from __future__ import annotations
+
+__all__: list[str] = []

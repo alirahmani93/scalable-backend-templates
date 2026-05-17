@@ -1,0 +1,145 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ project_name }} - generated from django-project-template."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Proprietary" }
+authors = [{ name = "{{ project_name }} team" }]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ---------------------------------------------------------------------------
+# Ruff - linting & formatting
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src"]
+extend-exclude = [
+    "migrations",
+    ".venv",
+    "build",
+    "dist",
+    "staticfiles",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+    "I",    # isort
+    "B",    # bugbear
+    "UP",   # pyupgrade
+    "SIM",  # simplify
+    "C4",   # comprehensions
+    "DJ",   # flake8-django
+    "N",    # naming
+    "RUF",  # Ruff-specific
+    "T20",  # flake8-print
+    "TID",  # tidy imports
+    "PL",   # Pylint subset
+]
+ignore = [
+    "E501",  # line length is enforced by the formatter
+    "PLR0913",  # functions can have many arguments in views/forms
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["S101", "PLR2004"]
+"**/settings/*.py" = ["F401", "F403", "F405"]
+"**/migrations/*.py" = ["E501", "RUF012"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "apps"]
+combine-as-imports = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+
+# ---------------------------------------------------------------------------
+# MyPy
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+plugins = ["mypy_django_plugin.main"]
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+ignore_missing_imports = false
+exclude = [
+    "^.*/migrations/.*$",
+    "^build/",
+    "^dist/",
+    "^.venv/",
+]
+
+[[tool.mypy.overrides]]
+module = ["dj_database_url.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["*.migrations.*"]
+ignore_errors = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings.development"
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+pythonpath = ["src"]
+testpaths = ["src"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--tb=short",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning:django.*",
+]
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+branch = true
+source = ["src"]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "*/settings/*",
+    "src/manage.py",
+    "src/config/wsgi.py",
+    "src/config/asgi.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]

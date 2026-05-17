@@ -1,0 +1,17 @@
+"""Views package for the {{ app_name }} app.
+
+Group views by resource and re-export the public ones, e.g.::
+
+    apps/{{ app_name }}/views/
+        __init__.py
+        example.py    # ExampleListView, ExampleDetailView
+
+    # __init__.py
+    from .example import ExampleListView, ExampleDetailView
+
+    __all__ = ["ExampleListView", "ExampleDetailView"]
+"""
+
+from __future__ import annotations
+
+__all__: list[str] = []

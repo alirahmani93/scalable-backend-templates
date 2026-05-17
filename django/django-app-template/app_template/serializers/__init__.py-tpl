@@ -1,0 +1,11 @@
+"""Serializers package for the {{ app_name }} app.
+
+Use one module per resource (DRF, Pydantic, marshmallow, ...). Public
+serializers should be re-exported here so callers can do::
+
+    from apps.{{ app_name }}.serializers import ExampleSerializer
+"""
+
+from __future__ import annotations
+
+__all__: list[str] = []

@@ -1,0 +1,6 @@
+"""URL package for the {{ app_name }} app.
+
+Versioned URL modules live next to this file (``v1_urls.py``, ``v2_urls.py``,
+...). They are intentionally not re-exported here so callers must import the
+explicit version they want.
+"""

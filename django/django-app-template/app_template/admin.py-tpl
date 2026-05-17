@@ -1,0 +1,13 @@
+"""Django admin registrations for the {{ app_name }} app.
+
+Register your models here, e.g.::
+
+    from django.contrib import admin
+    from apps.{{ app_name }}.models import Example
+
+    @admin.register(Example)
+    class ExampleAdmin(admin.ModelAdmin):
+        list_display = ("id",)
+"""
+
+from __future__ import annotations

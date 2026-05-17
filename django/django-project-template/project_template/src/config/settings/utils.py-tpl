@@ -1,0 +1,44 @@
+from decouple import config
+
+
+
+
+class _AppSetting():
+    ENV_DEVELOPMENT = "development"
+    ENV_TEST = "test"
+    ENV_STAGING = "staging"
+    ENV_PRODUCTION = "production"
+
+    ENVS_ALL = [
+        ENV_DEVELOPMENT,
+        ENV_TEST,
+        ENV_STAGING,
+        ENV_PRODUCTION,
+    ]
+    _settings = None
+    def __init__(self, *args, **kwargs):
+        if self._settings is not None:
+            return self._settings
+
+        env = config("APP_ENV", default=self.ENV_PRODUCTION, cast=str)
+        if env not in self.ENVS_ALL:
+            raise RuntimeError(f"APP_ENV {env} not supported.")
+        self.__env = env
+
+    def get_env(self) -> str:
+        return self.__env
+
+    def is_in_development_env(self) -> bool:
+        return self.get_env() == self.ENV_DEVELOPMENT
+
+    def is_in_test_env(self) -> bool:
+        return self.get_env() == self.ENV_TEST
+
+    def is_in_staging_env(self) -> bool:
+        return self.get_env() == self.ENV_STAGING
+
+    def is_in_production_env(self) -> bool:
+        return self.get_env() == self.ENV_PRODUCTION
+
+
+AppSetting = _AppSetting()

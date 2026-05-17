@@ -1,0 +1,6 @@
+"""Local applications namespace for the {{ project_name }} project.
+
+Each Django app generated with ``django-app-template`` should live as a
+sub-package of this directory. Register the dotted path inside
+``LOCAL_APPS`` in ``config.settings.base``.
+"""

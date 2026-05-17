@@ -1,0 +1,20 @@
+"""AppConfig for the {{ app_name }} app."""
+
+from __future__ import annotations
+
+from django.apps import AppConfig
+
+
+class {{ camel_case_app_name }}Config(AppConfig):
+    """Auto-generated configuration for the {{ app_name }} app."""
+
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.{{ app_name }}"
+    label = "{{ app_name }}"
+    verbose_name = "{{ camel_case_app_name }}"
+
+    def ready(self) -> None:
+        """Hook for signal registration and other startup wiring."""
+        # Import signal handlers lazily, e.g.:
+        # from . import signals  # noqa: F401
+        return None

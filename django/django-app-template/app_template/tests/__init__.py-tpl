@@ -1,0 +1,13 @@
+"""Tests for the {{ app_name }} app.
+
+Organise tests by layer (services, models, views, ...) to keep failures
+easy to localise::
+
+    apps/{{ app_name }}/tests/
+        __init__.py
+        test_models.py
+        test_services.py
+        test_views.py
+"""
+
+from __future__ import annotations

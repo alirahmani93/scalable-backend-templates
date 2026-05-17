@@ -1,0 +1,14 @@
+"""Custom Django model managers for the {{ app_name }} app.
+
+Group queryset and manager classes per model in dedicated modules, e.g.::
+
+    apps/{{ app_name }}/managers/
+        __init__.py
+        example.py     # ExampleQuerySet, ExampleManager
+
+Re-export public managers from this package's ``__init__`` if desired.
+"""
+
+from __future__ import annotations
+
+__all__: list[str] = []

@@ -1,0 +1,21 @@
+"""URL configuration for the {{ app_name }} app, v1 namespace.
+
+Wire the routes in your project's root ``urls.py``::
+
+    from django.urls import include, path
+
+    urlpatterns = [
+        ...
+        path("api/v1/{{ app_name }}/", include("apps.{{ app_name }}.urls.v1_urls")),
+    ]
+"""
+
+from __future__ import annotations
+
+from django.urls import path
+
+app_name = "{{ app_name }}_v1"
+
+urlpatterns: list = [
+    # path("", views.ExampleListView.as_view(), name="example-list"),
+]
