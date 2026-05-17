@@ -1,3 +1,6 @@
+# Scalable Backend Templates
+Production-grade scalable backend templates for modern frameworks like Django, Gin, Fiber, and more — featuring clean architecture, modular structure, Docker, testing, linting, and deployment-ready setups.
+
 # Django template kit
 
 This **single repository** ships two reusable Django scaffolds:
